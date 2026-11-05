@@ -1,5 +1,5 @@
-@font-face{font-family:'Exo 2';font-style:italic;font-weight:600 800;font-display:swap;src:url(../assets/fonts/exo2-italic.woff2) format('woff2')}
-@font-face{font-family:'Exo 2';font-style:normal;font-weight:300 800;font-display:swap;src:url(../assets/fonts/exo2-normal.woff2) format('woff2')}
+@font-face{font-family:'Exo 2';font-style:italic;font-weight:600 800;font-display:swap;src:url(/assets/fonts/exo2-italic.woff2) format('woff2')}
+@font-face{font-family:'Exo 2';font-style:normal;font-weight:300 800;font-display:swap;src:url(/assets/fonts/exo2-normal.woff2) format('woff2')}
 :root{
   --o:#F5A300; --o2:#FFC233; --k:#0d0d0d; --k2:#141414; --k3:#1d1d1d; --line:#2a2a2a;
   --w:#fff; --mut:#a9a9a9; --wa:#1ac45e; --wa-ink:#06210f;
@@ -218,13 +218,13 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 }
 
 /* foto da cidade no hero */
-.hero-photo{position:absolute;inset:-30px;background:url(../assets/capa.webp) center 60%/cover no-repeat;filter:blur(2px) saturate(1.25) brightness(1.1);opacity:.55;-webkit-mask-image:linear-gradient(100deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.95) 62%);mask-image:linear-gradient(100deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.95) 62%);will-change:transform;pointer-events:none}
+.hero-photo{position:absolute;inset:-30px;background:url(/assets/capa.webp) center 60%/cover no-repeat;filter:blur(2px) saturate(1.25) brightness(1.1);opacity:.55;-webkit-mask-image:linear-gradient(100deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.95) 62%);mask-image:linear-gradient(100deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.95) 62%);will-change:transform;pointer-events:none}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(transparent,var(--k));pointer-events:none;z-index:1}
 .hero-grid{z-index:2}
 
 /* faixa de impacto: a cidade à noite */
 .city{position:relative;isolation:isolate;overflow:hidden;min-height:min(92vh,860px);display:grid;align-items:center;padding-block:96px;background:var(--k)}
-.city-bg{position:absolute;inset:-14% 0;z-index:-2;background:url(../assets/capa.webp) center 55%/cover no-repeat;filter:blur(1.5px) saturate(1.3) contrast(1.05);transform:translate3d(0,var(--py,0px),0);will-change:transform}
+.city-bg{position:absolute;inset:-14% 0;z-index:-2;background:url(/assets/capa.webp) center 55%/cover no-repeat;filter:blur(1.5px) saturate(1.3) contrast(1.05);transform:translate3d(0,var(--py,0px),0);will-change:transform}
 .city::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,13,13,.94) 0%,rgba(13,13,13,.6) 52%,rgba(13,13,13,.2) 100%),linear-gradient(0deg,rgba(245,163,0,.4),transparent 45%),linear-gradient(180deg,var(--k),transparent 22%)}
 .city-grid{display:grid;gap:44px;align-items:center;justify-items:start}
 .city h2{font:800 clamp(3.6rem,16vw,8.4rem)/.86 var(--f);text-transform:uppercase;margin:6px 0 22px;letter-spacing:-.01em;text-shadow:0 8px 40px rgba(0,0,0,.6)}
@@ -257,7 +257,7 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 
 
 /* ===== capa da v1: vídeo fixo em tela cheia + texto à esquerda ===== */
-.bg{position:fixed;inset:0;z-index:-1;background:#050505 url(../assets/capa.webp) center/cover no-repeat;overflow:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:#050505 url(/assets/capa.webp) center/cover no-repeat;overflow:hidden}
 .bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
 .bg video.on{opacity:1}
 .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.72),rgba(5,5,5,.5) 45%,rgba(5,5,5,.78))}
