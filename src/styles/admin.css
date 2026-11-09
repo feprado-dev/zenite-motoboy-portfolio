@@ -21,7 +21,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .ghost{background:transparent;border:2px solid #444}
 .danger{background:transparent;border:2px solid var(--red);color:var(--red)}
 .sm{padding:8px 14px;font-size:.95rem}
-.file{cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* acesso */
 .gate{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(70% 60% at 80% 0,rgba(245,163,0,.25),transparent),var(--k)}

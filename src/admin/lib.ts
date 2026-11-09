@@ -41,8 +41,8 @@ export function gravar(chave: string, valor: string): void {
 
 export function carregarCorridas(): Corrida[] {
   try {
-    const dados: unknown = JSON.parse(ler(K_DATA) ?? '[]');
-    return Array.isArray(dados) ? (dados as Corrida[]) : [];
+    // O que vem do armazenamento é tratado como não confiável (mesma limpeza do backup).
+    return limparBackup(JSON.parse(ler(K_DATA) ?? '[]')) ?? [];
   } catch {
     return [];
   }
@@ -80,10 +80,11 @@ export function formatarData(quando: string): string {
   return Number.isNaN(d.getTime()) ? '—' : `${pad(d.getDate())}/${pad(d.getMonth() + 1)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-/** "12,50" | "1.250,00" | "12.5" -> número. */
+/** "12,50" | "1.250,00" | "1.250" | "12.5" -> número. */
 export function lerValor(texto: string): number {
   let s = texto.replace(/[^\d,.-]/g, '');
   if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.');
+  else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, ''); // "1.250" = mil duzentos e cinquenta
   const n = parseFloat(s);
   return Number.isNaN(n) ? 0 : Math.round(n * 100) / 100;
 }
@@ -163,7 +164,7 @@ export function limparBackup(dados: unknown): Corrida[] | null {
       quando: String(r.quando || agoraLocal()),
       cliente: String(r.cliente || '').slice(0, 60),
       servico: String(r.servico || 'Outro'),
-      valor: Number(r.valor) || 0,
+      valor: Number.isFinite(Number(r.valor)) ? Math.round(Number(r.valor) * 100) / 100 : 0,
       origem: String(r.origem || '').slice(0, 120),
       destino: String(r.destino || '').slice(0, 120),
       obs: String(r.obs || '').slice(0, 200),

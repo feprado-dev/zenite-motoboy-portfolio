@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { prefereMenosMovimento } from '../lib/motion';
 import {
   SERVICOS_ADMIN, agoraLocal, baixar, brl, celulaCsv, corridasDeExemplo, dataCarimbo, formatarData, lerValor, limparBackup,
   noPeriodo, normalizar, novoId, salvarCorridas, type Corrida, type Periodo,
@@ -38,6 +39,8 @@ export function Painel({ corridas, onMudar, onSair, onTrocarPin }: Props) {
   const [colar, setColar] = useState('');
   const [aviso, setAviso] = useState('');
   const refForm = useRef<HTMLFormElement>(null);
+  const refArquivo = useRef<HTMLInputElement>(null);
+  const timerAviso = useRef(0);
 
   const mudar = (lista: Corrida[]): void => {
     salvarCorridas(lista);
@@ -45,7 +48,8 @@ export function Painel({ corridas, onMudar, onSair, onTrocarPin }: Props) {
   };
   const avisar = (t: string): void => {
     setAviso(t);
-    window.setTimeout(() => setAviso(''), 5000);
+    window.clearTimeout(timerAviso.current);
+    timerAviso.current = window.setTimeout(() => setAviso(''), 5000);
   };
 
   /* ---------- números derivados ---------- */
@@ -102,7 +106,7 @@ export function Painel({ corridas, onMudar, onSair, onTrocarPin }: Props) {
 
   const editar = (r: Corrida): void => {
     setForm({ ...r, valor: String(r.valor).replace('.', ',') });
-    refForm.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    refForm.current?.scrollIntoView({ behavior: prefereMenosMovimento() ? 'auto' : 'smooth', block: 'center' });
   };
 
   const excluir = (r: Corrida): void => {
@@ -250,15 +254,15 @@ export function Painel({ corridas, onMudar, onSair, onTrocarPin }: Props) {
           </div>
           {lista.length > 0 ? (
             <div className="tbl" role="table" aria-label="Lista de corridas">
-              <div className="tr th" role="row"><span role="columnheader">Data</span><span role="columnheader">Cliente / serviço</span><span role="columnheader">Trajeto</span><span role="columnheader" className="r">Valor</span><span role="columnheader" /></div>
-              <div>
+              <div className="tr th" role="row"><span role="columnheader">Data</span><span role="columnheader">Cliente / serviço</span><span role="columnheader">Trajeto</span><span role="columnheader" className="r">Valor</span><span role="columnheader"><span className="sr">Ações</span></span></div>
+              <div role="rowgroup">
                 {lista.map((r) => (
                   <div className="tr" role="row" key={r.id}>
-                    <span>{formatarData(r.quando)}</span>
-                    <span><b>{r.cliente}</b><small>{r.servico + (r.obs ? ` · ${r.obs}` : '')}</small></span>
-                    <span>{r.origem}{r.destino && <><span className="arrow"> → </span>{r.destino}</>}</span>
-                    <span className="val">{brl.format(r.valor)}</span>
-                    <span className="act">
+                    <span role="cell">{formatarData(r.quando)}</span>
+                    <span role="cell"><b>{r.cliente}</b><small>{r.servico + (r.obs ? ` · ${r.obs}` : '')}</small></span>
+                    <span role="cell">{r.origem}{r.destino && <><span className="arrow"> → </span>{r.destino}</>}</span>
+                    <span role="cell" className="val">{brl.format(r.valor)}</span>
+                    <span role="cell" className="act">
                       <button type="button" className="ib" title="Editar" aria-label={`Editar corrida de ${r.cliente}`} onClick={() => editar(r)}>✎</button>
                       <button type="button" className="ib del" title="Excluir" aria-label={`Excluir corrida de ${r.cliente}`} onClick={() => excluir(r)}>✕</button>
                     </span>
@@ -298,7 +302,8 @@ export function Painel({ corridas, onMudar, onSair, onTrocarPin }: Props) {
             <button className="btn wa" type="button" id="seedDemo" onClick={exemplo}>Carregar dados de exemplo</button>
             <button className="btn dark" type="button" onClick={csv}>Baixar planilha (CSV)</button>
             <button className="btn dark" type="button" onClick={json}>Backup (JSON)</button>
-            <label className="btn dark file">Restaurar backup<input type="file" accept="application/json,.json" hidden onChange={restaurar} /></label>
+            <button className="btn dark" type="button" onClick={() => refArquivo.current?.click()}>Restaurar backup</button>
+            <input ref={refArquivo} type="file" accept="application/json,.json" hidden onChange={restaurar} />
             <button className="btn ghost" type="button" onClick={onTrocarPin}>Trocar PIN</button>
             <button className="btn danger" type="button" onClick={apagar}>Apagar tudo</button>
           </div>
