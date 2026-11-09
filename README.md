@@ -2,6 +2,8 @@
 
 Landing page de uma empresa **fictícia** de motoboys, reescrita em **React 19 + TypeScript + Vite**. Marca, telefones, endereço e dados são inventados.
 
+**Site no ar:** https://zenite-motoboy-portfolio.vercel.app
+
 ## Scripts
 ```bash
 npm install

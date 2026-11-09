@@ -95,6 +95,7 @@ export function useVideoLoop(atrasoMs: number) {
     if (!vid || prefereMenosMovimento() || conexaoLeve()) return;
     vid.muted = true;
     vid.defaultMuted = true;
+    vid.preload = 'auto';
     const tocar = (): void => {
       void vid.play().catch(() => undefined);
     };

@@ -157,7 +157,8 @@ function NumeroGrande() {
   const mega = useRef<HTMLAnchorElement>(null);
   const txt = useRef<HTMLSpanElement>(null);
   const ondulando = useRef(false);
-  const valor = formatNumero(CONFIG.whatsapp);
+  // Em demonstração mostra uma chamada em vez de um número fictício ("90000-0000" parecia site inacabado).
+  const valor = CONFIG.demo ? 'CHAME\u00a0JÁ' : formatNumero(CONFIG.whatsapp);
   const reduz = prefereMenosMovimento();
   const avisar = useAviso();
 
@@ -184,7 +185,7 @@ function NumeroGrande() {
       ref={mega}
       className="mega rv"
       href="#contato"
-      aria-label={`Chamar no WhatsApp: ${valor}`}
+      aria-label={CONFIG.demo ? 'Chamar no WhatsApp' : `Chamar no WhatsApp: ${valor}`}
       onClick={(e) => {
         if (CONFIG.demo) {
           e.preventDefault();
@@ -217,14 +218,14 @@ export function Contato() {
         <p className="kicker dk rv">Contato</p>
         <NumeroGrande />
         <p className="mega-s rv">
-          Toque no número e chame agora no WhatsApp. Atendemos a cidade e região, 24 horas por dia. Viagens: consulte valor e horário. <b>Projeto fictício de portfólio.</b>
+          {CONFIG.demo ? 'Toque e chame agora no WhatsApp.' : 'Toque no número e chame agora no WhatsApp.'} Atendemos a cidade e região, 24 horas por dia. Viagens: consulte valor e horário. <b>Projeto fictício de portfólio.</b>
         </p>
         <div className="cards">
           <TelLink className="cc rv" tel={CONFIG.telefone}>
             <Icon name="phone" className="ic" />
             <span>
               <small>Telefone</small>
-              <b>{formatTelefone(CONFIG.telefone)}</b>
+              <b>{CONFIG.demo ? 'Ligar agora' : formatTelefone(CONFIG.telefone)}</b>
             </span>
           </TelLink>
           {CONFIG.telefoneAlt.ativo && (
@@ -232,7 +233,7 @@ export function Contato() {
               <Icon name="phone" className="ic" />
               <span>
                 <small>Telefone alternativo</small>
-                <b>{formatTelefone(CONFIG.telefoneAlt)}</b>
+                <b>{CONFIG.demo ? 'Segunda linha' : formatTelefone(CONFIG.telefoneAlt)}</b>
               </span>
             </TelLink>
           )}

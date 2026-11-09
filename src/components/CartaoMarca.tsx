@@ -19,11 +19,11 @@ export function CartaoMarca({ compacto = false, className = '' }: Props) {
         {!compacto && (
           <div className="nums" aria-hidden="true">
             <p>
-              <b>{CONFIG.telefone.prefixo}</b> <span>{formatNumero(CONFIG.telefone.numero)}</span>
+              <b>{CONFIG.demo ? '24H' : CONFIG.telefone.prefixo}</b> <span>{CONFIG.demo ? 'TODO DIA' : formatNumero(CONFIG.telefone.numero)}</span>
             </p>
             <p>
               <Icon name="wa" />
-              <span>{formatNumero(CONFIG.whatsapp)}</span>
+              <span>{CONFIG.demo ? 'ZAP PRONTO' : formatNumero(CONFIG.whatsapp)}</span>
             </p>
           </div>
         )}
