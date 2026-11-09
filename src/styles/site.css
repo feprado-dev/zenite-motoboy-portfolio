@@ -224,7 +224,6 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 
 /* faixa de impacto: a cidade à noite */
 .city{position:relative;isolation:isolate;overflow:hidden;min-height:min(92vh,860px);display:grid;align-items:center;padding-block:96px}
-.city::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,13,13,.94) 0%,rgba(13,13,13,.6) 52%,rgba(13,13,13,.2) 100%),linear-gradient(0deg,rgba(245,163,0,.4),transparent 45%),linear-gradient(180deg,var(--k),transparent 22%)}
 .city-grid{display:grid;gap:44px;align-items:center;justify-items:start}
 .city h2{font:800 clamp(3.6rem,16vw,8.4rem)/.86 var(--f);text-transform:uppercase;margin:6px 0 22px;letter-spacing:-.01em;text-shadow:0 8px 40px rgba(0,0,0,.6)}
 .city h2 em{font-style:normal;color:var(--o);text-shadow:0 0 50px rgba(245,163,0,.55)}
