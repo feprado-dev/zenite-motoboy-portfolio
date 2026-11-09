@@ -231,14 +231,9 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 .city h2 em{font-style:normal;color:var(--o);text-shadow:0 0 50px rgba(245,163,0,.55)}
 .city-p{font-size:1.2rem;font-weight:500;max-width:30ch;color:#f0e6dc}
 .city .cta{margin-block:28px 0}
-.frame{margin:0;position:relative;width:min(280px,70vw);aspect-ratio:326/590;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.28);box-shadow:0 30px 90px rgba(245,163,0,.35),0 0 0 8px rgba(255,255,255,.04);animation:bobl 6s ease-in-out infinite}
-.frame img{width:100%;height:100%;object-fit:cover}
-.frame figcaption{position:absolute;left:12px;bottom:12px;background:var(--o);color:var(--k);font:800 .95rem var(--f);letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
 @media (min-width:960px){
   .city-grid{grid-template-columns:1.35fr 1fr;justify-items:stretch}
-  .frame{justify-self:end;width:min(340px,26vw)}
 }
-@media (prefers-reduced-motion:reduce){.frame{animation:none}}
 
 /* cartão da marca (logo fictícia feita em SVG) */
 .lc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;border-radius:18%;background:radial-gradient(90% 70% at 50% 0,#2a2210,#0d0d0d 70%);border:max(2px,1.4cqw) solid var(--o);padding:5cqw 4cqw 4cqw}

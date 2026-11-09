@@ -143,10 +143,6 @@ export function Cidade() {
             </a>
           </div>
         </div>
-        <figure className="frame rv">
-          <img src="/assets/capa.webp" width={893} height={1600} alt="Fita de luz âmbar em movimento, ilustração abstrata" loading="lazy" />
-          <figcaption>Atendimento 24 hrs</figcaption>
-        </figure>
       </div>
     </section>
   );
