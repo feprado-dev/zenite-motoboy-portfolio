@@ -44,12 +44,11 @@ export function useRevelar(): void {
 
 /**
  * Efeitos ligados à rolagem: barra de progresso, escurecimento do vídeo (--dk),
- * flutuar da fumaça (--py) e parallax da seção "cidade". Devolve se o menu fica sólido.
+ * flutuar da fumaça (--py). Devolve se o menu fica sólido.
  */
 export function useRolagem(): boolean {
   const [solido, setSolido] = useState(false);
   useEffect(() => {
-    const reduce = prefereMenosMovimento();
     const raiz = document.documentElement.style;
     let pendente = false;
 
@@ -63,16 +62,6 @@ export function useRolagem(): boolean {
       const barra = document.getElementById('bar');
       if (barra) barra.style.transform = `scaleX(${total > 0 ? clamp(y / total, 0, 1) : 0})`;
       setSolido(y > 40);
-      if (!reduce) {
-        const cidade = document.getElementById('cidade');
-        const fundo = document.getElementById('cityBg');
-        if (cidade && fundo) {
-          const r = cidade.getBoundingClientRect();
-          if (r.bottom > 0 && r.top < vh) {
-            fundo.style.setProperty('--py', `${((r.top + r.height / 2 - vh / 2) * -0.14).toFixed(1)}px`);
-          }
-        }
-      }
     };
     const aoRolar = (): void => {
       if (!pendente) {

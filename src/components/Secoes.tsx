@@ -123,7 +123,6 @@ export function PorQue() {
 export function Cidade() {
   return (
     <section className="city" id="cidade">
-      <div className="city-bg" id="cityBg" aria-hidden="true" />
       <div className="wrap city-grid">
         <div className="city-copy">
           <p className="kicker rv">24 horas por dia</p>

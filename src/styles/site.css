@@ -110,7 +110,7 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 
 /* seções */
 .sec{padding-block:84px}
-.sec.alt{background:var(--k2);border-block:1px solid var(--line)}
+.sec.alt{background:rgba(13,13,13,.45);border-block:1px solid var(--line)}
 .kicker{font:700 .95rem var(--f);letter-spacing:.22em;text-transform:uppercase;color:var(--o);margin-bottom:10px}
 .kicker.dk{color:var(--k)}
 .h2{font:800 clamp(2.4rem,9vw,4.4rem)/.95 var(--f);text-transform:uppercase;margin-bottom:40px}
@@ -223,8 +223,7 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 .hero-grid{z-index:2}
 
 /* faixa de impacto: a cidade à noite */
-.city{position:relative;isolation:isolate;overflow:hidden;min-height:min(92vh,860px);display:grid;align-items:center;padding-block:96px;background:var(--k)}
-.city-bg{position:absolute;inset:-14% 0;z-index:-2;background:url(/assets/capa.webp) center 55%/cover no-repeat;filter:blur(1.5px) saturate(1.3) contrast(1.05);transform:translate3d(0,var(--py,0px),0);will-change:transform}
+.city{position:relative;isolation:isolate;overflow:hidden;min-height:min(92vh,860px);display:grid;align-items:center;padding-block:96px}
 .city::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,13,13,.94) 0%,rgba(13,13,13,.6) 52%,rgba(13,13,13,.2) 100%),linear-gradient(0deg,rgba(245,163,0,.4),transparent 45%),linear-gradient(180deg,var(--k),transparent 22%)}
 .city-grid{display:grid;gap:44px;align-items:center;justify-items:start}
 .city h2{font:800 clamp(3.6rem,16vw,8.4rem)/.86 var(--f);text-transform:uppercase;margin:6px 0 22px;letter-spacing:-.01em;text-shadow:0 8px 40px rgba(0,0,0,.6)}
@@ -260,7 +259,6 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 .smoke{position:absolute;inset:0;mix-blend-mode:screen;opacity:calc(.7 - var(--dk,0)*.7);transform:translate3d(0,calc(var(--py,0)*-1px),0);pointer-events:none}
 .smoke video{inset:-6% 0;height:112%;transition-duration:1.6s}
 @media (min-width:900px){.veil{background:linear-gradient(90deg,rgba(5,5,5,.78) 0%,rgba(5,5,5,.3) 55%,rgba(5,5,5,.08) 100%)}}
-@media (min-width:700px){.bg video,.smoke video{left:7%;width:86%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}}
 .nav{position:fixed;left:0;right:0;top:0;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
 .nav.solid-bar{background:rgba(5,5,5,.78);border-bottom-color:var(--line)}
 .cover{min-height:min(100svh,900px);display:grid;align-items:center;padding:96px 16px 56px}
@@ -278,7 +276,7 @@ legend,.fld>span{font:700 .9rem var(--f);letter-spacing:.1em;text-transform:uppe
 .a{opacity:0;transform:translateY(22px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0)*.12s)}
 @keyframes up{to{opacity:1;transform:none}}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--wa);animation:pulse 2s infinite}
-.peca{background:linear-gradient(180deg,rgba(13,13,13,.55),rgba(13,13,13,.9))}
+.peca{background:linear-gradient(180deg,rgba(13,13,13,.35),rgba(13,13,13,.6))}
 .peca-in{display:grid;gap:44px;align-items:center}
 .peca-p{color:#d6d6d6;max-width:36ch;font-size:1.1rem}
 .peca .deck{width:100%;max-width:460px;justify-self:center}
